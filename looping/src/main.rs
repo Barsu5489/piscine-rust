@@ -11,7 +11,7 @@ fn main() -> io::Result<()> {
     // Start a loop that will continue until the correct answer is given
     loop {
         // Print the riddle
-        println!("{}", riddle.trim());
+        println!("{}", riddle.trim);
 
         // Read the user's input
         input.clear(); // Clear the previous input
@@ -22,7 +22,7 @@ fn main() -> io::Result<()> {
 
         // Check if the input is correct
         if input.trim() == correct_answer {
-            println!("Number of trials: {} ", attempts.trim());
+            println!("Number of trials: {}", attempts);
             break;
         } 
     }
