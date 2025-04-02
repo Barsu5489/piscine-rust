@@ -4,7 +4,7 @@ fn main() -> io::Result<()> {
     // The riddle and the correct answer
     let riddl = "I am the beginning of the end, and the end of time and space. \
                   I am essential to creation, and I surround every place. What am I?";
-                  let riddle = riddl.trim()
+                  let riddle = riddl.trim();
     let correct_answer = "The letter e";
 
     let mut attempts = 0;
