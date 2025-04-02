@@ -1,7 +1,7 @@
 #[derive(PartialEq, Eq, Debug)]
 pub struct  Matrix ( 
-    (i32, i32),
-    (i32, i32),
+    pub (i32, i32),
+    pub (i32, i32),
 );
 pub fn transpose(m: Matrix) -> Matrix {
     let (a, b) = (m.0, m.1); // Unwrap the two tuples
