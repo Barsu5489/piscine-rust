@@ -2,9 +2,7 @@ use std::io;
 
 fn main() -> io::Result<()> {
     // The riddle and the correct answer
-    let riddl = "I am the beginning of the end, and the end of time and space. \
-                  I am essential to creation, and I surround every place. What am I?";
-                  let riddle = riddl.trim();
+    let riddl = "I am the beginning of the end, and the end of time and space. I am essential to creation, and I surround every place. What am I?";
     let correct_answer = "The letter e";
 
     let mut attempts = 0;
@@ -13,7 +11,7 @@ fn main() -> io::Result<()> {
     // Start a loop that will continue until the correct answer is given
     loop {
         // Print the riddle
-        println!("{}", riddle);
+        print!("{}", riddle);
 
         // Read the user's input
         input.clear(); // Clear the previous input
@@ -23,8 +21,8 @@ fn main() -> io::Result<()> {
         attempts += 1;
 
         // Check if the input is correct
-        if input.trim() == correct_answer.trim() {
-            println!("Number of trials: {} ", attempts);
+        if input.trim() == correct_answer {
+            print!("Number of trials: {} ", attempts);
             break;
         } 
     }
