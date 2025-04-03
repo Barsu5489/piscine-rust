@@ -27,6 +27,10 @@ pub fn delete_and_backspace(s: &mut String) {
 }
 
 
+
+
+
+
 pub fn do_operations(v: &mut Vec<String>) {
     for element in v.iter_mut() {
         let operator_index = element.chars().position(|c| c == '+' || c == '-');
