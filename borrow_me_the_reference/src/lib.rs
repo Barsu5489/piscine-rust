@@ -31,7 +31,7 @@ pub fn delete_and_backspace(s: &mut String) {
 
 
 
-pub fn do_operations(v: &mut Vec<String>) {
+pub fn do_operations(v: &mut [String]){
     for element in v.iter_mut() {
         let operator_index = element.chars().position(|c| c == '+' || c == '-');
         if let Some(i) = operator_index {
@@ -53,4 +53,18 @@ pub fn do_operations(v: &mut Vec<String>) {
             }
         }
     }
+}
+fn main() {
+    let mut a = "bpp--o+er+++sskroi-++lcw".to_owned();
+    let mut b = [
+        "2+2".to_owned(),
+        "3+2".to_owned(),
+        "10-3".to_owned(),
+        "5+5".to_owned(),
+    ];
+
+    delete_and_backspace(&mut a);
+    do_operations(&mut b);
+
+    println!("{:?}", (a, b));
 }
