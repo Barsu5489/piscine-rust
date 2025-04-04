@@ -1,0 +1,56 @@
+// struct Rectangle{
+//     width : u32,
+//     length: u32
+// }
+// impl  Rectangle{
+//     fn square(&self) -> bool{
+//         self.width == self.length
+//     }
+// }
+
+// fn main(){
+//     let rect = Rectangle{width:5, length: 7};
+//     println!("Rectangle is square {}", rect.square())
+// }
+
+pub struct Light {
+pub alias: String,
+pub brightness: u8,
+}
+
+impl Light{
+    fn new(alias: &str) -> Self{  
+    Self { 
+        alias: alias.to_string(),
+         brightness: 0 }
+    }
+}
+
+pub fn change_brightness(lights: &mut [Light], alias: &str, value: u8) {
+    if let Some(lgt) =  lights.iter_mut().find(|lgt|lgt.alias == alias){
+        lgt.brightness = value;
+    }
+}
+
+
+fn main() {
+    let mut lights = ["living_room", "bedroom", "rest_room"].map(Light::new);
+
+    println!("brightness = {}", lights[0].brightness);
+
+    change_brightness(&mut lights, "living_room", 200);
+
+    println!("new brightness = {}", lights[0].brightness);
+}
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn it_works() {
+        let result = add(2, 2);
+        assert_eq!(result, 4);
+    }
+}
