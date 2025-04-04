@@ -1,7 +1,7 @@
 #[derive(Debug, Clone, Copy)]
 pub struct Point(f64, f64);
 
-impl Point {
+pub impl Point {
     pub fn distance(&self, other: Point) -> f64 {
         let dx = self.0 - other.0;
         let dy = self.1 - other.1;
@@ -15,7 +15,7 @@ pub struct Circle {
     pub radius: f64,
 }
 
-impl Circle {
+pub impl Circle {
     pub fn new(x: f64, y: f64, radius: f64) -> Self {
         Self {
             center: Point(x, y),
