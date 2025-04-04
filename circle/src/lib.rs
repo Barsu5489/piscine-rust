@@ -15,6 +15,7 @@ pub struct Circle {
     pub radius: f64,
 }
 
+
 impl Circle {
     pub fn new(x: f64, y: f64, r: f64) -> Self {
         Circle {
