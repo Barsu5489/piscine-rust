@@ -13,13 +13,15 @@
 //     println!("Rectangle is square {}", rect.square())
 // }
 
+#[derive(Debug, Eq, PartialEq, Clone)]
 pub struct Light {
-pub alias: String,
-pub brightness: u8,
+	pub alias: String,
+	pub brightness: u8,
 }
 
-impl Light{
-    fn new(alias: &str) -> Self{  
+
+impl Light {
+    pub fn new(alias: &str) -> Self {
     Self { 
         alias: alias.to_string(),
          brightness: 0 }
