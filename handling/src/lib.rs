@@ -1,8 +1,6 @@
 use std::fs::OpenOptions;
 use std::io::Write;
 use std::path::Path;
-use std::fs::File;
-use std::{write, fs};
 
 pub fn open_or_create<P: AsRef<Path>>(path: &P, content: &str) {
    let mut file: File = OpenOptions::new()
@@ -10,7 +8,9 @@ pub fn open_or_create<P: AsRef<Path>>(path: &P, content: &str) {
    .append(true)
    .open(path);
 
-   file.write_all(content)
+   if let Err(err) = file.write_all(content.as_bytes()) {
+    panic!("{}", err);
+}
 
 }
 #[cfg(test)]
