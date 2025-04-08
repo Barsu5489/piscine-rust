@@ -7,11 +7,10 @@ pub fn open_or_create<P: AsRef<Path>>(path: &P, content: &str) {
    let mut file: File = OpenOptions::new()
    .create(true) 
    .append(true)
-   .open(path);
+   .open(path).expect("h");
+   
+   file.write_all(content.as_bytes()).unwrap()
 
-   if let Err(err) = file.write_all(content.as_bytes()) {
-    panic!("{}", err);
-}
 
 }
 #[cfg(test)]
