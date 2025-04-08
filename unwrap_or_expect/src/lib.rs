@@ -8,21 +8,22 @@ pub enum Security {
 
 
 // Implement fetch_data with Result<&str, &str>
+
 pub fn fetch_data(server: Result<&str, &str>, security_level: Security) -> String {
     match (server, security_level) {
-        // Ok case: Return the server URL for all variants
         (Ok(url), Security::Unknown) => url.to_string(),
-        (Ok(url), Security::Message) => url.to_string(),
-        (Ok(url), Security::Warning) => url.to_string(),
-        (Ok(url), Security::NotFound) => url.to_string(),
-        (Ok(url), Security::UnexpectedUrl) => url.to_string(),
+        (Err(_), Security::Unknown) => panic!(), // Panics with no message
 
-        // Err cases: Handle based on security_level
-        (Err(_), Security::Unknown) => panic!("No server URL provided"),
-        (Err(_), Security::Message) => panic!("ERROR: program stops"),
-        (Err(_), Security::Warning) => String::from("WARNING: check the server"),
+        (Ok(url), Security::Message) => url.to_string(),
+        (Err(_), Security::Message) => panic!("ERROR: program stops"), // Panics with message
+
+        (Ok(url), Security::Warning) => url.to_string(),
+        (Err(_), Security::Warning) => "WARNING: check the server".to_string(),
+
+        (Ok(url), Security::NotFound) => url.to_string(),
         (Err(msg), Security::NotFound) => format!("Not found: {}", msg),
-        (Err(msg), Security::UnexpectedUrl) => panic!("{}", msg),
+
+        (Err(msg), Security::UnexpectedUrl) => msg.to_string(),
+        (Ok(url), Security::UnexpectedUrl) => panic!("{}", url), // Panics with server URL
     }
 }
-
