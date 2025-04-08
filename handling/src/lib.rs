@@ -1,13 +1,14 @@
 use std::fs::OpenOptions;
 use std::io::Write;
 use std::path::Path;
-use std::{fs,io::write};
+use std::fs::File;
+use std::{write, fs};
 
 pub fn open_or_create<P: AsRef<Path>>(path: &P, content: &str) {
-   let mut file: File = fs::OpenOptions::new()
+   let mut file: File = OpenOptions::new()
    .create(true) 
    .append(true)
-   .open(&path)?;
+   .open(path);
 
    file.write_all(content)
 
