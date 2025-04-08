@@ -1,6 +1,6 @@
 use std::fs::OpenOptions;
 use std::path::Path;
-use std::{write, fs};
+use std::io::Write;
 
 pub fn open_or_create<P: AsRef<Path>>(path: &P, content: &str) {
    let mut file = fs::OpenOptions::new()
@@ -9,6 +9,6 @@ pub fn open_or_create<P: AsRef<Path>>(path: &P, content: &str) {
    .open(&path)
    .unwrap();
 
-   file.write_all(content.as_bytes()).unwrap()
+   file.write(content.as_bytes()).unwrap()
 
 }
