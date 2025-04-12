@@ -1,70 +1,27 @@
-pub fn delete_and_backspace(s: &mut String) {
-    let mut chars: Vec<char> = s.chars().collect();
-    let mut i = chars.len() ;	
-	while i  > 0 {
-		i -= 1;
-        if chars[i] == '+' {
-			chars.remove(i); 
-            if i < chars.len() {
-                chars.remove(i);
-            }
-        }
-    }	
-    i = 0;
-    while i < chars.len() {
-        if chars[i] == '-' {
-            if i > 0 {
-                chars.remove(i - 1);
-                i -= 1;
-            }
-            chars.remove(i); 
-        }  else {
-            i += 1;
-        }
-    }
-	
-    *s = chars.into_iter().collect();
+// nstructions
+
+// Create a function remove_letter_sensitive that returns a string without the letter specified as argument.
+
+// Create a function remove_letter_insensitive that returns a string without the letter specified as argument (ignoring case).
+
+// Create a function swap_letter_case that returns a string swapping the case for the chosen letter.
+// Expected Functions
+
+pub fn remove_letter_sensitive(s: &str, letter: char) -> String {
 }
 
-
-
-
-
-
-pub fn do_operations(v: &mut [String]){
-    for element in v.iter_mut() {
-        let operator_index = element.chars().position(|c| c == '+' || c == '-');
-        if let Some(i) = operator_index {
-            let operator = element.chars().nth(i);
-            let (left, right) = element.split_at(i);
-            let x = left.trim().parse::<i32>().expect("invalid number");
-            let y = right.trim().parse::<i32>().expect("invalid number");
-            if let Some(o) = operator {
-                match o {
-                    '+' => {
-						*element = (x + y).to_string()
-					},
-                    '-' => {
-                        let y = -y;
-						*element = (x - y).to_string()
-					}
-					_ => println!("{} is not a valid operator!!",o)
-                }
-            }
-        }
-    }
+pub fn remove_letter_insensitive(s: &str, letter: char) -> String {
 }
+
+pub fn swap_letter_case(s: &str, letter: char) -> String {
+}
+
+// Usage
+
+// Here is a program to test your functions.
+
+
+
 fn main() {
-    let mut a = "bpp--o+er+++sskroi-++lcw".to_owned();
-    let mut b = [
-        "2+2".to_owned(),
-        "3+2".to_owned(),
-        "10-3".to_owned(),
-        "5+5".to_owned(),
-    ];
-
-    delete_and_backspace(&mut a);
-    do_operations(&mut b);
-
-    println!("{:?}", (a, b));
+    println!("{}", remove_letter_sensitive("Jojhn jis sljeepjjing", 'j'));
 }

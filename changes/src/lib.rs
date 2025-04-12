@@ -35,7 +35,15 @@ pub fn change_brightness(lights: &mut [Light], alias: &str, value: u8) {
 }
 
 
+fn main() {
+    let mut lights = ["living_room", "bedroom", "rest_room"].map(Light::new);
 
+    println!("brightness = {}", lights[0].brightness);
+
+    change_brightness(&mut lights, "living_room", 200);
+
+    println!("new brightness = {}", lights[0].brightness);
+}
 
 
 #[cfg(test)]
