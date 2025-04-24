@@ -38,3 +38,13 @@ impl Vehicle for Car<'_> {
         self.year
     }
 }
+
+
+#[allow(dead_code)]
+pub fn all_models(list: Vec<&dyn Vehicle>) -> Vec<&str> {
+    let mut models = Vec::new();
+    for ve in list {
+        models.push(ve.model());
+    }
+    models
+}
